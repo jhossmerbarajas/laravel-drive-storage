@@ -1,8 +1,12 @@
 <x-layouts.layout>
 	
 	<x-layouts.buttoncreate />
+	
+
 	@foreach($directories as $directory)
-		<a href="{{ route('file.show', $directory) }}"> {{ $directory }} </a>
+		<x-card route="{{ $directory }}">
+			{{ basename($directory) }}
+		</x-card>
 	@endforeach
 
 </x-layouts.layout>

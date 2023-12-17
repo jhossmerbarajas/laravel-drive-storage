@@ -15,14 +15,16 @@ class FilesController extends Controller
 
    	function create() {}
 
-   	function store(Request $req) {
-   		return $req->all();
+   	function store(Request $req, ?string $files = null) {
+      
+         $req->validate([
+   			"name_folder" => "required"
+   		]);
+         $directories = $files . '/' . $req->input("name_folder");
+   		 
+   		Storage::disk("system")->makeDirectory($directories);
 
-         // $req->validate([
-   		// 	"nameDir" => "required"
-   		// ]);
-   		// $directory = $req->input("nameDir");
-   		// return Storage::disk("system")->makeDirectory($directory);
+         return redirect()->route("file.show", $directories);
    	}
 
    	function show($data) {

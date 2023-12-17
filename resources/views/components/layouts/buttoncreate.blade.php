@@ -21,4 +21,4 @@
 	</ul>
 </div>
 
-<x-layouts.partials.modaldir/>
+<x-layouts.partials.modaldir />

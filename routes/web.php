@@ -25,4 +25,4 @@ Route::get('/', function () {
 
 //Barras diagonales codificadas con el método where
 Route::get("/{files?}",[FilesController::class, 'show'])->name('file.show')->where('files', '.*'); 
-Route::post("/{files?}",[FilesController::class, 'store'])->name('file.store');
+Route::post("/{files?}",[FilesController::class, 'store'])->name('file.store')->where('files', '.*');

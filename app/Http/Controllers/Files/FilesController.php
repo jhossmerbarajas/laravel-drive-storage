@@ -1,36 +1,36 @@
 <?php
 
-namespace App\Http\Controllers\Files;
+// namespace App\Http\Controllers\Files;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Storage;
+// use Illuminate\Http\Request;
+// use App\Http\Controllers\Controller;
+// use Illuminate\Support\Facades\Storage;
 
-class FilesController extends Controller
-{
-   	function index() {
-   		// $directories = Storage::disk("system")->allDirectories();
-   		// return view('index', compact('directories'));
-   	}
+// class FilesController extends Controller
+// {
+//    	function index() {
+//    		// $directories = Storage::disk("system")->allDirectories();
+//    		// return view('index', compact('directories'));
+//    	}
 
-   	function create() {}
+//    	function create() {}
 
-   	function store(Request $req, ?string $files = null) {
+//    	function store(Request $req, ?string $files = null) {
       
-         $req->validate([
-   			"name_folder" => "required"
-   		]);
-         $directories = $files . '/' . $req->input("name_folder");
-   		 
-   		Storage::disk("system")->makeDirectory($directories);
+//          $req->validate([
+//    			"name_folder" => "required"
+//    		]);
 
-         return redirect()->route("file.show", $directories);
-   	}
+//          $directories = $files . '/' . $req->input("name_folder"); 
+//    		Storage::disk("system")->makeDirectory($directories);
 
-   	function show($data) {
-   		$directories = Storage::disk("system")->directories($data);
-   		$files = Storage::disk("system")->allFiles($data);
+//          return redirect()->route("file.show", $directories);
+//    	}
 
-   		return view("files.show", compact('directories', 'files'));
-   	}
-}
+//    	function show($data) {
+//    		$directories = Storage::disk("system")->directories($data);
+//    		$files = Storage::disk("system")->allFiles($data);
+
+//    		return view("files.show", compact('directories', 'files'));
+//    	}
+// }

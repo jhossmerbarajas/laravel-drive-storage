@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 
+use App\Http\Controllers\Directories\DirectoriesController;
 use App\Http\Controllers\Files\FilesController;
 
 /*
@@ -23,6 +24,21 @@ Route::get('/', function () {
 
 // Route::resource("/{files?}", FilesController::class)->names("file");
 
+
 //Barras diagonales codificadas con el método where
-Route::get("/{files?}",[FilesController::class, 'show'])->name('file.show')->where('files', '.*'); 
-Route::post("/{files?}",[FilesController::class, 'store'])->name('file.store')->where('files', '.*');
+Route::get("/{directories?}", [DirectoriesController::class, 'show'])
+		->name('directory.show')
+		->where('directories', '.*'); 
+
+Route::post("/{directories?}", [DirectoriesController::class, 'store'])
+		->name('directory.store')
+		->where('directories', '.*');
+
+
+//Barras diagonales codificadas con el método where
+// Route::get("/{files?}",[FilesController::class, 'show'])
+// 		->name('file.show')->where('files', '.*'); 
+
+// Route::post("/{files?}",[FilesController::class, 'store'])
+// 		->name('file.store')
+// 		->where('files', '.*');

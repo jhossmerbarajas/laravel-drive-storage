@@ -19,7 +19,9 @@ use App\Http\Controllers\Files\FilesController;
 
 Route::get('/', function () {
 	$directories = Storage::disk("system")->directories();
-    return view('index', compact('directories'));
+	$files = Storage::disk("system")->files();
+	var_dump($files);
+    return view('index', compact('directories', 'files'));
 })->name("index");
 
 // Route::resource("/{files?}", FilesController::class)->names("file");
@@ -39,6 +41,6 @@ Route::post("/{directories?}", [DirectoriesController::class, 'store'])
 // Route::get("/{files?}",[FilesController::class, 'show'])
 // 		->name('file.show')->where('files', '.*'); 
 
-// Route::post("/{files?}",[FilesController::class, 'store'])
-// 		->name('file.store')
-// 		->where('files', '.*');
+Route::post("/file/{files?}",[FilesController::class, 'store'])
+		->name('file.store')
+		->where('files', '.*');

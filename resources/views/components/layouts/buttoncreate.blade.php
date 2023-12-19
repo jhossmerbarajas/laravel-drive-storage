@@ -4,21 +4,31 @@
 	</button>
 	<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 	    <li>
-	    	<a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#createDir" href="#"> 
+	    	<a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#directory" href="#"> 
 	    		Folder 
 	    	</a>
 	    </li>
 	    <li>
-	    	<a class="dropdown-item" href="#"> 
+	    	<a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#file" href="#"> 
 	    		File 
 	    	</a>
 	    </li>
 	   <li>
-	   		<a class="dropdown-item" href="#"> 
+	   		<a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#images" href="#"> 
 	   			Image 
 	   		</a>
 	   	</li>
 	</ul>
 </div>
 
-<x-layouts.partials.modaldir />
+<x-layouts.partials.modal 
+	id="directory" 
+	name="directory"
+	type="text"
+/>
+
+<x-layouts.partials.modal 
+	id="file" 
+	name="file"
+	type="file"
+/>

@@ -16,22 +16,29 @@ class DirectoriesController extends Controller
    	function create() {}
 
    	function store(Request $req, ?string $files = null) {
-      
-         $req->validate([
-   			"name_folder" => "required"
-   		]);
+  
+         if($req->input("directory")) {
+           
+            $directories = $files . '/' . $req->input("directory"); 
+      		Storage::disk("system")->makeDirectory($directories);
 
-         $directories = $files . '/' . $req->input("name_folder"); 
-   		Storage::disk("system")->makeDirectory($directories);
+            return redirect()->route("directory.show", $directories);
+         
+         } else {
+            $img = $req->file("file");
+            $name = $img->getClientOriginalName();
 
-         return redirect()->route("file.show", $directories);
+            return Storage::disk("system")->putFileAs($files, $img, $name);
+            // return $req->file("file")->store("system");
+         }
+
    	}
 
    	function show($data) {
    		$directories = Storage::disk("system")->directories($data);
-   		$files = Storage::disk("system")->allFiles($data);
+   		$files = Storage::disk("system")->files($data);
 
-   		return view("files.show", compact('directories', 'files'));
+   		return view("directories.show", compact('directories', 'files'));
    	}
 }
 

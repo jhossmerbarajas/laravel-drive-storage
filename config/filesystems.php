@@ -58,7 +58,9 @@ return [
 
         'system' => [
             'driver' => 'local',
-            'root' => 'C:\\Users\\JhossWeb\\Documentos\\'
+            'root' => 'C:\\Users\\JhossWeb\\Documents\\files',
+            'url' => env('APP_URL').'/files',
+            'visibility' => 'public'
         ]
 
     ],

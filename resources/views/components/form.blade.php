@@ -2,6 +2,7 @@
 
 <form {{ $attributes }}
 	method="{{ $method == "get" ? "get" : "post"  }}"
+	enctype="multipart/form-data"
 >
 	@if( $method != "get")
 		@csrf
